@@ -1,22 +1,22 @@
 require 'pry'
-# primes.rb
+require 'byebug'
 
-
-primes = []
-
-num = 1
-while primes.count < 100
-  is_prime = true
+def prime?(num)
   (1..num).each do |idx|
     if num % idx == 0
-      is_prime = false
-      break
+      return false
     end
-  end
-
-  if is_prime
-    primes << num
   end
 end
 
-puts primes
+def primes(num_primes)
+  ps = []
+  num = 1
+  while ps.count < num_primes
+    primes << num if prime?(num)
+  end
+end
+
+if __FILE__ == $PROGRAM_NAME
+  puts primes(100)
+end
